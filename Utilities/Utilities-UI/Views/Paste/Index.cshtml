@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Paste a snippet</h2>
+
+@using (Html.BeginForm())
+{
+   <textarea rows="8" cols="50">Insert your snippet here</textarea>
+    
+    <input type="submit" value="Submit"/>
+}
