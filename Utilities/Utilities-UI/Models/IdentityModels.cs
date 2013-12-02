@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Utilities_UI.Models
 {
@@ -13,5 +15,7 @@ namespace Utilities_UI.Models
             : base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<Assignment> Assignments { get; set; }
     }
 }

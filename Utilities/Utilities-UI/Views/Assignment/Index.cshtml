@@ -1,0 +1,57 @@
+﻿@using Utilities_UI.Models
+@model IEnumerable<Utilities_UI.Models.Assignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Time left(days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Due)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (Assignment item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <div class="progress">
+                                        
+                    @{
+                        TimeSpan total = item.Due - item.Created;
+                        long percentage = ((DateTime.Now - item.Created).Ticks*100)/total.Ticks;
+                    }
+                   @total.Days
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%"></div>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Due)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+            </td>
+        </tr>
+    }
+
+</table>
