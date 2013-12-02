@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Utilities_UI.Migrations;
 
 namespace Utilities_UI.Models
 {
@@ -14,8 +15,15 @@ namespace Utilities_UI.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+            
         }
 
         public System.Data.Entity.DbSet<Assignment> Assignments { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+        }
     }
 }
