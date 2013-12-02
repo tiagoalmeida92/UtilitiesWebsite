@@ -1,5 +1,5 @@
 ﻿@using Utilities_UI.Models
-@model IEnumerable<Utilities_UI.Models.Assignment>
+@model IEnumerable<AssignmentViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -13,43 +13,39 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Assignment.Description)
         </th>
         <th>
-            Time left(days)
+            Time left
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Due)
+            @Html.DisplayNameFor(model => model.Assignment.Due)
         </th>
-
+        <th>@Html.DisplayNameFor(m => m.Assignment.Created)</th>
         <th></th>
     </tr>
 
-    @foreach (Assignment item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Assignment.Description)
             </td>
             <td>
-                <div class="progress">
-                                        
-                    @{
-                        TimeSpan total = item.Due - item.Created;
-                        long percentage = ((DateTime.Now - item.Created).Ticks*100)/total.Ticks;
-                    }
-                   @total.Days
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @percentage%"></div>
+                <div class="progress"> 
+                    <div class="progress-bar progress-bar-@(item.Percentage > 75?"danger":"info")" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: @item.Percentage%"></div>
                 </div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Due)
+                @Html.DisplayFor(modelItem => item.Assignment.Due)
             </td>
-
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                @Html.DisplayFor(m => item.Assignment.Created)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Assignment.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Assignment.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Assignment.Id })
             </td>
         </tr>
     }

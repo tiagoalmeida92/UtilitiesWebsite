@@ -17,7 +17,8 @@ namespace Utilities_UI.Controllers
         // GET: /Assignment/
         public ActionResult Index()
         {
-            return View(db.Assignments.ToList());
+            var assignments = db.Assignments.ToList();
+            return View(assignments.Select( a => new AssignmentViewModel{Assignment = a, Percentage = a.CalculatePercentage()}));
         }
 
         // GET: /Assignment/Details/5
