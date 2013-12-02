@@ -20,10 +20,5 @@ namespace Utilities_UI.Models
 
         public System.Data.Entity.DbSet<Assignment> Assignments { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
-        }
     }
 }

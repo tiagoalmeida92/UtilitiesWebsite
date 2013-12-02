@@ -9,11 +9,15 @@ namespace Utilities_UI.Models
         public int Id { get; set; }
         public string Description { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        
         public DateTime Created { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime Due { get; set; }
 
+        public Assignment()
+        {
+            Created = DateTime.Now;
+        }
     }
 }
