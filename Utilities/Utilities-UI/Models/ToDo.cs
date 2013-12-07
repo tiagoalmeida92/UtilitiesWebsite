@@ -3,17 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Utilities_UI.Models
 {
-    public class Assignment
+    public class ToDo
     {
-        public Assignment()
-        {
-            Created = DateTime.Now;
-        }
 
         public int Id { get; set; }
         public string Description { get; set; }
 
-
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime Created { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]

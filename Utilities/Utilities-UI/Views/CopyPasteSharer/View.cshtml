@@ -1,0 +1,13 @@
+﻿@model Utilities_UI.Models.CopyPaste
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<div>
+    <hr />
+
+    @Html.TextAreaFor(model => model.Content, 15, 200, null)
+
+</div>

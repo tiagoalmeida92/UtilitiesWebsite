@@ -7,7 +7,7 @@ namespace Utilities_UI.Models
 {
     public class AssignmentViewModel
     {
-        public Assignment Assignment { get; set; }
+        public ToDo ToDo { get; set; }
         public int Percentage { get; set; }
     }
 }

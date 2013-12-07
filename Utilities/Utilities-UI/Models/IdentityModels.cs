@@ -18,7 +18,9 @@ namespace Utilities_UI.Models
             
         }
 
-        public System.Data.Entity.DbSet<Assignment> Assignments { get; set; }
+        public System.Data.Entity.DbSet<ToDo> Assignments { get; set; }
+
+        public System.Data.Entity.DbSet<Utilities_UI.Models.CopyPaste> Pastes { get; set; }
 
     }
 }
