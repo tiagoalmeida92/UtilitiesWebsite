@@ -10,6 +10,7 @@ namespace Utilities_UI.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Utilities_UI.Models.ApplicationDbContext";
         }
 
